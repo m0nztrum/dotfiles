@@ -1,0 +1,6 @@
+include mocha
+
+set selection-clipboard clipboard
+set recolor "true"
+set recolor-keephue "true"
+set guioptions none
