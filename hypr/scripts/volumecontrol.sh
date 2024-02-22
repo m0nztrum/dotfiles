@@ -72,3 +72,4 @@ case $1 in
         notify_mute ;;
     *) print_error ;;
 esac
+
