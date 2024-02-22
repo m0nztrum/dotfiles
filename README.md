@@ -1,3 +1,5 @@
+> [!CAUTION]
+
 ## dotfiles
 
 my personal dotfiles
