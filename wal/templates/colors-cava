@@ -198,10 +198,10 @@ gradient = 1
 gradient_count = 5
 
 gradient_color_1 = "{color1}"
-gradient_color_2 = "{color6}"
-gradient_color_3 = "{color4}"
-gradient_color_4 = "{color7}"
-gradient_color_5 = "{color10}"
+gradient_color_2 = "{color2}"
+gradient_color_3 = "{color3}"
+gradient_color_4 = "{color4}"
+gradient_color_5 = "{color5}"
 
 
 [smoothing]
