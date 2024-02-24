@@ -1,0 +1,106 @@
+{
+    // modules positioning
+    "position": "top",
+    "layer": "top",
+    "height": 10,
+    "margin-top": "0",
+    "margin-bottom": -10,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["custom/playerctl", "clock"],
+    "modules-right": ["tray", "group/group-applets", "custom/wallchange"],
+
+    // Modules configuration
+    "clock": {
+        "format": "{:%H:%M:%OS}",
+        "interval": 1,
+        "tooltip": "false",
+        "format-alt": "{:%d/%m/%Y}",
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15,
+        },
+        "format": "{icon}",
+        "format-charging": "󰂄",
+        "format-plugged": "󱐋",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "interval": 1,
+        "tooltip-format": "{capacity}% - {time}",
+    },
+
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"],
+        },
+        "on-click": "pamixer -t",
+        //	"on-scroll-up":,
+        //	"on-scroll-down":,
+        "tooltip-format": "{volume}%",
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        // "on-scroll-up": "brightnessctl set 1%+",
+        // "on-scroll-down": "brightnessctl set 1%-",
+        "tooltip-format": "{percent}%",
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 5,
+    },
+
+    "memory": {
+        "format": "󰍛 {}%",
+        "format-alt": "󰍛 {used}/{total} GiB",
+        "interval": 1,
+    },
+
+    "cpu": {
+        "format": "󰻠 {usage}%",
+        "format-alt": "󰻠 {avg_frequency} GHz",
+        "interval": 1,
+    },
+
+    "cutom/playerctl": {
+        "format": "{icon}   ::  <span>{}</span>",
+        "return-type": "json",
+        "max-length": 64,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click-middle": "playerctl play-pause",
+        "on-click": "playerctl previous",
+        "on-click-right": "playerctl next",
+        "format-icons": {
+            "Playing": "<span foreground='#B1B946'>󰒮 󰐌  󰒭</span>",
+            "Paused": "<span foreground='#47423E'>󰒮 󰏥  󰒭</span>",
+        },
+    },
+
+    "custom/wallchange": {
+        "format": "{}",
+        "exec": "echo ; echo 󰆊 switch wallpaper",
+        "on-click": "~/.config/hypr/scripts/swww_randomize.sh",
+        "interval": 86400, // once every day
+        "tooltip": true,
+    },
+
+    "group/group-applets": {
+        "orientation": "inherit",
+        "modules": ["pulseaudio", "backlight", "battery", "memory", "cpu"],
+    },
+}
