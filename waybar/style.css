@@ -1,0 +1,93 @@
+@import '/home/draco/.cache/wal/colors-waybar.css';
+
+* {
+    min-height: 0;
+    border: none;
+    font-family: 'JetBrainsMono Nerd Font';
+    font-size: 12px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: alpha(@background, 0.3);
+    color: @foreground;
+    transition-property: opacity, background-color;
+    transition-duration: 0.5s;
+    border-radius: 10px 10px 10px 10px;
+}
+
+#custom-media.custom-spotify {
+    color: #66cc99;
+}
+#workspaces button {
+    margin: 4px 2px;
+    padding: 0;
+    background-color: alpha(@color2, 0.5);
+    color: @color11;
+    border: 1px solid @color3;
+    border-radius: 14px;
+}
+
+#workspaces button.active {
+    color: @color9;
+    padding-left: 5px;
+    padding-right: 5px;
+    transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+}
+
+#network,
+#pulseaudio,
+#backlight,
+#disk,
+#custom-wallchange,
+#custom-media #bluetooth,
+#memory,
+#cpu,
+#battery,
+#clock,
+#workspaces,
+#tray {
+    color: @foreground;
+    padding: 0px 8px 0px 8px;
+    /* background-color: @background; */
+    /* border-radius: 10px; */
+    /* margin: 4px 2px 0 2px; */
+}
+
+#cpu {
+    color: @color12;
+}
+
+#custom-wallchange,
+#pulseaudio {
+    color: @color14;
+}
+
+#battery.critical,
+#battery.warning,
+#battery.full,
+#battery.plugged {
+    color: @color15;
+}
+
+#clock {
+    color: @color12;
+}
+
+#pulseaudio.muted,
+#network.disconnected,
+#memory {
+    color: @color11;
+}
+
+#network,
+#pulseaudio.microphone,
+#backlight {
+    color: @color13;
+}
+
+tooltip {
+    border-radius: 10px;
+    padding: 15px;
+    background-color: @background;
+}
