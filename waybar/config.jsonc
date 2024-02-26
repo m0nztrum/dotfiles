@@ -5,7 +5,20 @@
     "height": 0,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["custom/media"],
-    "modules-right": ["tray", "clock", "pulseaudio", "pulseaudio#microphone", "backlight", "battery", "memory", "cpu", "disk", "network", "custom/wallchange"],
+    "modules-right": [
+        "tray",
+        "idle_inhibitor",
+        "clock",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "backlight",
+        "battery",
+        "memory",
+        "cpu",
+        "disk",
+        "network",
+        "custom/wallchange",
+    ],
     "reload_style_on_change": true,
 
     // Modules configuration
@@ -19,6 +32,13 @@
         "disable-scroll": false,
         "on-scroll-up": "hyprctl dispatch workspace -1",
         "on-scroll-down": "hyprctl dispatch workspace +1",
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " ",
+        },
     },
 
     "battery": {
