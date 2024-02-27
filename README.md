@@ -19,6 +19,6 @@
 
 ## Packages
 
-```bash
-paru -S hyprland xorg-wayland python-pywal waybar polkit-kde-agent
+```
+paru -S hyprland xorg-wayland python-pywal waybar polkit-kde-agent swappy swayidle pavucontrol playerctl brightnessctl
 ```
