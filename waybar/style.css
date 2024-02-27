@@ -39,8 +39,10 @@ window#waybar {
 #pulseaudio,
 #backlight,
 #disk,
+#idle_inhibitor,
 #custom-wallchange,
-#custom-media #bluetooth,
+#custom-media,
+#bluetooth,
 #memory,
 #cpu,
 #battery,
@@ -48,7 +50,7 @@ window#waybar {
 #workspaces,
 #tray {
     color: @foreground;
-    padding: 0px 8px 0px 8px;
+    padding: 0px 7px 0px 7px;
     /* background-color: @background; */
     /* border-radius: 10px; */
     /* margin: 4px 2px 0 2px; */
