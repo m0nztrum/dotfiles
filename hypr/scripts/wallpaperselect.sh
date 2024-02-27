@@ -30,6 +30,7 @@ if [ ! -z "${RofiSel}" ] ; then
 
 
   wal -i "${wallPath}"
+  pkill waybar && waybar
   pywalfox update
 
 

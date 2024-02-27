@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 rofi \
     -show drun \
-    -theme ~/.config/rofi/launcher/style.rasi
+    -theme ~/.config/rofi/launcher.rasi

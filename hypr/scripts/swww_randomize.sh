@@ -22,6 +22,7 @@ if [ ${#files[@]} -ge 1 ]; then
  
   wal -i "${random}"
   pywalfox update
+  pkill waybar && waybar
 
   dunstify "Changed Wallpaper to ${random}" -a "wallpaper" -i "${random}" -r 91190 -t 2000
 else
