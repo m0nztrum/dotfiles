@@ -91,5 +91,6 @@ window#waybar {
 tooltip {
     border-radius: 10px;
     padding: 15px;
-    background-color: @background;
+    /* background-color: alpha(@background, 0.5); */
+    background-color: alpha(@color4, 0.5);
 }
