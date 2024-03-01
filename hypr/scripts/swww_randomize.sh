@@ -19,12 +19,12 @@ if [ ${#files[@]} -ge 1 ]; then
 
   # Set the wallpaper using your swww and wal commands
   swww img "${random}" --transition-step 110 --transition-type center --transition-fps 24
- 
+
+  dunstify "Changed Wallpaper to ${random}" -a "wallpaper" -i "${random}" -r 91190 -t 2000
   wal -i "${random}"
   pywalfox update
   pkill waybar && waybar
 
-  dunstify "Changed Wallpaper to ${random}" -a "wallpaper" -i "${random}" -r 91190 -t 2000
 else
   echo "Error: No wallpapers found in the specified directory."
 fi
