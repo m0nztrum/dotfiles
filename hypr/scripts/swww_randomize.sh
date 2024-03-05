@@ -9,6 +9,7 @@ if [ ! -d "$WALLPAPER_DIR" ]; then
   exit 1
 fi
 
+
 # Get a list of all files in the wallpaper directory
 files=("$WALLPAPER_DIR"/*)
 
@@ -24,7 +25,6 @@ if [ ${#files[@]} -ge 1 ]; then
   wal -i "${random}"
   pywalfox update
   pkill waybar && waybar
-
 else
   echo "Error: No wallpapers found in the specified directory."
 fi

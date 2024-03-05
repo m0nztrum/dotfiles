@@ -3,15 +3,10 @@
 /* ---- Configuration ---- */
 
 configuration {
-	modi:                       "drun,run,filebrowser,window,calc";
+	modi:                       "drun";
     show-icons:                 true;
-    display-calc:               "Calc";
     display-drun:               "Apps";
-    display-run:                "Run";
-    display-filebrowser:        "Files";
-    display-window:             "Windows";
 	drun-display-format:        "{name}";
-	window-format:              "{w} · {c} · {t}";
     font:                        "JetBrains Mono Nerd Font 10";
 }
 

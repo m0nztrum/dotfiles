@@ -27,5 +27,6 @@ if [ ! -z "${RofiSel}" ] ; then
   dunstify "Changed Wallpaper to ${RofiSel}" -a "Wallpaper" -i "${wallPath}/${RofiSel}" -r 91190 -t 2200
   wal -i "${wallPath}"
   pkill waybar && waybar
+
   pywalfox update
 fi

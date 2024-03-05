@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
-rofi \
-    -show drun \
-    -theme ~/.config/rofi/launcher.rasi
+
+dir="$HOME/.config/rofi/"
+theme="launcher"
+
+rofi -show drun -theme "${dir}"/${theme}.rasi
