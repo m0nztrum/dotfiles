@@ -25,6 +25,8 @@ if [ ! -z "${RofiSel}" ] ; then
     --transition-duration 2
 
   dunstify "Changed Wallpaper to ${RofiSel}" -a "Wallpaper" -i "${wallPath}/${RofiSel}" -r 91190 -t 2200
+  ln -sf "$selected" "$HOME/.config/swww/.current_wallpaper"
+
   wal -i "${wallPath}"
   pkill waybar && waybar
 
