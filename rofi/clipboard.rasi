@@ -1,6 +1,3 @@
-/* config - Clipboard */
-
-/* ---- Configuration ---- */
 configuration {
     modi:                        "drun";
     show-icons:                  false;
@@ -34,6 +31,7 @@ configuration {
 /* ---- Window ---- */
 window {
     // Default
+    height:                     55%;
     enabled:                    true;
     fullscreen:                 false;
     transparency:               "real";

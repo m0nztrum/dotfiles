@@ -63,7 +63,7 @@ inputbar {
     border-radius:               25px;
     orientation:                 horizontal;
     children:                    ["entry", "dummy", "mode-switcher" ];
-    background-image:            url("~/.config/rofi/.current_wallpaper", width);
+    background-image:            url("~/.config/swww/.current_wallpaper", width);
 }
 
 /* ---- Entry input ---- */
@@ -92,7 +92,7 @@ listbox {
 /* ---- Listview ---- */
 listview {
     enabled:                     true;
-    columns:                     2;
+    columns:                     3;
     lines:                       8;
     cycle:                       true;
     dynamic:                     true;
