@@ -1,5 +1,4 @@
 #!/bin/bash
-# Clipboard Manager. This script uses cliphist, rofi, and wl-copy.
 
 # Actions:
 # CTRL Del to delete an entry
@@ -10,6 +9,7 @@ while true; do
         rofi -dmenu \
             -kb-custom-1 "Control-Delete" \
             -kb-custom-2 "Alt-Delete" \
+            -p "Cliphist"\
             -config ~/.config/rofi/clipboard.rasi < <(cliphist list)
     )
 
@@ -36,4 +36,3 @@ while true; do
             ;;
     esac
 done
-
