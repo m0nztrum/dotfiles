@@ -1,8 +1,8 @@
 [global]
     monitor = 0
-    follow = mouse
+    follow = none
     width = 300
-    origin = bottom-right
+    origin = top-right
     offset = 26x27
     notification_limit = 6
     progress_bar = true
@@ -18,7 +18,7 @@
     horizontal_padding = 20
     text_icon_padding = 20
     frame_width = 0
-    frame_color = "{foreground}"
+    frame_color = "{background}"
     separator_color = auto
     sort = yes
     idle_threshold = 120

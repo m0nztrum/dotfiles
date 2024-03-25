@@ -12,23 +12,23 @@ x_monres=$(( x_monres * 17 / monitor_scale ))
 
 # launch rofi menu
 RofiSel=$( find -L "${wallPath}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec basename {} \; | sort | while read rfile
-do
-  echo -en "$rfile\x00icon\x1f${wallPath}/${rfile}\n"
+    do
+        echo -en "$rfile\x00icon\x1f${wallPath}/${rfile}\n"
 done | rofi -show -dmenu -theme  "${RofiConf}" -select "${currentWall}")
 
 # apply wallpaper
 if [ ! -z "${RofiSel}" ] ; then
-  selected="${wallPath}/${RofiSel}"
+    selected="${wallPath}/${RofiSel}"
 
-  swww img $selected \
-    --transition-type "wipe" \
-    --transition-duration 2
+    swww img $selected \
+        --transition-type "wipe" \
+        --transition-duration 2
 
-  dunstify "Changed Wallpaper to ${RofiSel}" -a "Wallpaper" -i "${wallPath}/${RofiSel}" -r 91190 -t 2200
-  ln -sf "$selected" "$HOME/.config/swww/.current_wallpaper"
+    dunstify "Changed Wallpaper to ${RofiSel}" -a "Wallpaper" -i "${wallPath}/${RofiSel}" -r 91190 -t 2200
+    ln -sf "$selected" "$HOME/.config/swww/.current_wallpaper"
 
-  wal -i "${wallPath}"
-  pkill waybar && waybar
+    wal -i "${wallPath}"
+    pkill waybar && waybar
 
-  pywalfox update
+    pywalfox update
 fi
