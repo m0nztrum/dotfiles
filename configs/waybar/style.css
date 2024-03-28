@@ -11,21 +11,18 @@
 window#waybar {
     background-color: alpha(@background, 0.3);
     color: @foreground;
-    transition-property: opacity, background-color;
     transition-duration: 0.5s;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 8px;
+    border-style: solid;
 }
 
-#custom-media.custom-spotify {
-    color: #66cc99;
-}
 #workspaces button {
     margin: 4px 2px;
     padding: 0;
-    background-color: alpha(@color2, 0.5);
-    color: @color11;
-    border: 1px solid @color3;
-    border-radius: 14px;
+    background-color: alpha(@background, 0.7);
+    color: @foreground;
+    border-radius: 9px;
+    animation: gradient_f 20s ease-in infinite;
 }
 
 #workspaces button.active {
@@ -33,6 +30,10 @@ window#waybar {
     padding-left: 5px;
     padding-right: 5px;
     transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+}
+
+#custom-media.custom-spotify {
+    color: #66cc99;
 }
 
 #network,
@@ -47,17 +48,27 @@ window#waybar {
 #cpu,
 #battery,
 #clock,
-#workspaces,
+#temperature,
+#custom-cava_mviz,
+#power-profiles-daemon,
+#custom-playerctl,
 #tray {
     color: @foreground;
-    padding: 0px 7px 0px 7px;
-    /* background-color: @background; */
-    /* border-radius: 10px; */
-    /* margin: 4px 2px 0 2px; */
+    padding: 0px 8px 0px 8px;
+    border-radius: 10px;
+    margin: 2px;
+    background-color: @background;
 }
 
+/*
+ *      Module styles
+ * */
 #cpu {
     color: @color12;
+}
+
+#custom-playerctl {
+    background: alpha(@background, 0.5);
 }
 
 #custom-wallchange,
@@ -70,10 +81,6 @@ window#waybar {
 #battery.full,
 #battery.plugged {
     color: @color15;
-}
-
-#clock {
-    color: @color12;
 }
 
 #pulseaudio.muted,
@@ -91,6 +98,7 @@ window#waybar {
 tooltip {
     border-radius: 10px;
     padding: 15px;
-    /* background-color: alpha(@background, 0.5); */
-    background-color: alpha(@color4, 0.5);
+    background-color: alpha(@background, 0.5);
 }
+
+/* defining the separation here */

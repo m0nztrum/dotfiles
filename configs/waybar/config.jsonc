@@ -3,22 +3,44 @@
     "position": "top",
     "layer": "top",
     "height": 0,
-    "modules-left": ["hyprland/workspaces", "idle_inhibitor"],
+    "modules-left": [
+        "hyprland/workspaces",
+        "idle_inhibitor",
+        "power-profiles-daemon",
+    ],
     "modules-center": ["clock", "custom/media"],
-    "modules-right": ["tray", "pulseaudio", "pulseaudio#microphone", "backlight", "battery", "memory", "cpu", "disk", "network", "custom/wallchange"],
+    "modules-right": [
+        "tray",
+        "group/audio",
+        "group/laptop",
+        "group/motherboard",
+        "network",
+        "custom/wallchange",
+    ],
     "reload_style_on_change": true,
 
     // Modules configuration
     "clock": {
-        "format": "{:%H:%M:%OS} ",
+        "format": "{:%H:%M:%OS}",
         "interval": 1,
-        "format-alt": "{:%d/%m/%Y}",
+        "format-alt": " {:%H:%M   %Y, %d %B, %A}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     },
 
     "hyprland/workspaces": {
         "disable-scroll": false,
         "on-scroll-up": "hyprctl dispatch workspace -1",
         "on-scroll-down": "hyprctl dispatch workspace +1",
+        // "format": "{icon}",
+        // "format-icons": {
+        //     "1": "",
+        //     "2": "",
+        //     "3": "",
+        //     "4": "",
+        //     "5": "",
+        //     "active": "",
+        //     "default": "",
+        // },
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -76,8 +98,8 @@
 
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{icon} ",
-        "format-icons": ["", "", ""],
+        "format": "{icon}",
+        "format-icons": ["", "", "", "󰃟 ", "󰃠 "],
         "on-scroll-up": "brightnessctl set 7%+",
         "on-scroll-down": "brightnessctl set 7%-",
         "tooltip-format": "{percent}% ",
@@ -103,8 +125,15 @@
         "path": "/home/draco",
     },
 
+    "temperature": {
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""],
+    },
+
     "network": {
-        "format-wifi": "",
+        "format-wifi": " ",
         "rotate": 0,
         "tooltip-format": "{essid} ({signalStrength}%)",
         "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
@@ -115,15 +144,17 @@
         "on-click": "nm-applet",
     },
 
-    // "network": {
-    //     "tooltip": true,
-    //     "format-wifi": " ",
-    //     "rotate": 0,
-    //     "format-ethernet": "󰈀 ",
-    //     "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
-    //     "format-linked": "󰈀 {ifname} (No IP)",
-    //     "tooltip-format-disconnected": "Disconnected",
-    // },
+    "power-profiles-daemon": {
+        "format": "{icon} ",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": "",
+        },
+    },
 
     "custom/media": {
         "format": "{icon} {}",
@@ -146,5 +177,30 @@
         "on-click": "~/.config/hypr/scripts/swww_randomize.sh",
         "interval": 86400, // once every day
         "tooltip": true,
+    },
+
+    "custom/cava_mviz": {
+        "exec": "~/.config/waybar/scripts/waybarcava.sh",
+        "format": "{}",
+    },
+
+    "custom/lock": {
+        "format": "󰍁",
+        "on-click": "hyprlock",
+    },
+
+    "group/audio": {
+        "orientation": "horizontal",
+        "modules": ["pulseaudio", "pulseaudio#microphone"],
+    },
+
+    "group/motherboard": {
+        "orientation": "horizontal",
+        "modules": ["disk", "memory", "cpu"],
+    },
+
+    "group/laptop": {
+        "orientation": "horizontal",
+        "modules": ["backlight", "battery"],
     },
 }
