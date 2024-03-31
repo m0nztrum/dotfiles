@@ -1,0 +1,188 @@
+{
+    "clock": {
+        "format": "{:%H:%M:%OS}",
+        "interval": 1,
+        "format-alt": " {:%H:%M   %Y, %d %B, %A}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1"
+        // "format": "{icon}",
+        // "format-icons": {
+        //     "1": "",
+        //     "2": "",
+        //     "3": "",
+        //     "4": "",
+        //     "5": "",
+        //     "active": "",
+        //     "default": "",
+        // },
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}%",
+        "format-time": "{H}hr & {m}min",
+        "format-charging": "󱐋 {capacity}%",
+        "format-plugged": "󱐋 {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 1,
+        "tooltip-format-charging": "{time} (󰢟 charging), at {capacity}%",
+        "tooltip-format-discharging": "{time} (󱧦 discharging), at {capacity}%"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "rotate": 0,
+        "format-muted": "婢",
+        "on-click": "pavucontrol -t 3",
+        "on-click-middle": "~/.config/hypr/scripts/volumecontrol.sh -o m",
+        "on-scroll-up": "~/.config/hypr/scripts/volumecontrol.sh -o i",
+        "on-scroll-down": "~/.config/hypr/scripts/volumecontrol.sh -o d",
+        "tooltip-format": "{icon} {desc} : {volume}%",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "rotate": 0,
+        "format-source": " {volume}%",
+        "format-source-muted": " {volume}",
+        "on-click": "pavucontrol -t 4",
+        "on-click-middle": "~/.config/hypr/scripts/volumecontrol.sh -i m",
+        "on-scroll-up": "~/.config/hypr/scripts/volumecontrol.sh -i i",
+        "on-scroll-down": "~/.config/hypr/scripts/volumecontrol.sh -i d",
+        "tooltip-format": "{format_source} {source_desc}"
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}",
+        "format-icons": ["", "", "", "󰃟 ", "󰃠 "],
+        "on-scroll-up": "brightnessctl set 7%+",
+        "on-scroll-down": "brightnessctl set 7%-",
+        "tooltip-format": "{percent}% "
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    },
+
+    "memory": {
+        "format": "󰍛 {}%",
+        "interval": 1,
+        "on-click": "btop"
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 1
+    },
+
+    "disk": {
+        "format": " ~ {}%",
+        "path": "/home/draco"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+
+    "network": {
+        "format-wifi": " ",
+        "rotate": 0,
+        "tooltip-format": "{essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "󰖪 Disconnected",
+        "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+        "interval": 2,
+        "on-click": "nm-applet"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon} ",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": " "
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null",
+        "on-click": "playerctl --player spotify play-pause",
+        "on-scroll-up": "playerctl --player spotify next",
+        "on-scroll-down": "playerctl --player spotify next"
+    },
+
+    "custom/wallchange": {
+        "format": "",
+        "exec": "echo ; echo 󰆊 switch wallpaper",
+        "on-click": "~/.config/hypr/scripts/swww_randomize.sh",
+        "interval": 86400, // once every day
+        "tooltip": true
+    },
+
+    "custom/cava_mviz": {
+        "exec": "~/.config/waybar/scripts/waybarcava.sh",
+        "format": "{}"
+    },
+
+    "custom/lock": {
+        "format": "󰍁",
+        "on-click": "hyprlock"
+    },
+
+    "group/audio": {
+        "orientation": "horizontal",
+        "modules": ["pulseaudio", "pulseaudio#microphone"]
+    },
+
+    "group/motherboard": {
+        "orientation": "horizontal",
+        "modules": ["disk", "memory", "cpu"]
+    },
+
+    "group/laptop": {
+        "orientation": "horizontal",
+        "modules": ["backlight", "battery"]
+    }
+}

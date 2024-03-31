@@ -4,7 +4,7 @@
     min-height: 0;
     border: none;
     font-family: 'JetBrainsMono Nerd Font';
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
 }
 
@@ -36,16 +36,13 @@ window#waybar {
     color: #66cc99;
 }
 
+/* general applied to most modules */
 #network,
-#pulseaudio,
 #backlight,
-#disk,
 #idle_inhibitor,
 #custom-wallchange,
 #custom-media,
 #bluetooth,
-#memory,
-#cpu,
 #battery,
 #clock,
 #temperature,
@@ -60,11 +57,35 @@ window#waybar {
     background-color: @background;
 }
 
-/*
- *      Module styles
- * */
-#cpu {
-    color: @color12;
+/* style for groups and individul modules */
+#motherboard {
+    background-color: @background;
+    padding: 0px 8px 0px 8px;
+    border-radius: 10px;
+    margin: 2px;
+    color: @color8;
+}
+
+#cpu,
+#disk,
+#memory {
+    margin-right: 8px;
+}
+
+#audio {
+    background-color: @background;
+    padding: 0px 8px 0px 8px;
+    border-radius: 10px;
+    margin: 2px;
+}
+
+#pulseaudio,
+#pulseaudio.microphone {
+    margin-right: 4px;
+}
+
+#custom-cava_mviz {
+    margin-right: 15px;
 }
 
 #custom-playerctl {
@@ -84,13 +105,11 @@ window#waybar {
 }
 
 #pulseaudio.muted,
-#network.disconnected,
-#memory {
+#network.disconnected {
     color: @color11;
 }
 
 #network,
-#pulseaudio.microphone,
 #backlight {
     color: @color13;
 }
@@ -100,5 +119,3 @@ tooltip {
     padding: 15px;
     background-color: alpha(@background, 0.5);
 }
-
-/* defining the separation here */

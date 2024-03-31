@@ -1,7 +1,7 @@
 ## Installation
 
 > [!CAUTION]
-> This dots are still being worked on
+> Requires [pywal](https://github.com/dylanaraps/pywal) to work
 
 ## Config Details
 
@@ -17,8 +17,13 @@
 -   Browser: Firefox
 -   Colorscheme generation utility: pywal
 
-## Packages
+# Screenshots
 
-```
-paru -S hyprland xorg-wayland python-pywal waybar polkit-kde-agent swappy swayidle pavucontrol playerctl brightnessctl
-```
+<details>
+<summary>Waybar</summary>
+
+![shot-1](screenshots/waybar1.png)
+![shot-2](screenshots/waybar2.png)
+![shot-3](screenshots/waybar3.png)
+
+</details>
