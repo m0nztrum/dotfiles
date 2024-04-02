@@ -1,50 +1,51 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-ScrDir=`dirname "$(realpath "$0")"`
+iDIR="$HOME/.config/swaync/icons"
+notification_timeout=1000
 
-function print_error
-{
-cat << "EOF"
-    ./brightnesscontrol.sh <action>
-    ...valid actions are...
-        i -- <i>ncrease brightness [+5%]
-        d -- <d>ecrease brightness [-5%]
-EOF
+# Get brightness
+get_backlight() {
+    echo $(brightnessctl -m | cut -d, -f4)
 }
 
-function send_notification {
-    value=$1
-    info=$2
-
-    angle="$(((($value + 2) / 5) * 5))"
-    ico="~/.config/dunst/icons/vol/vol-${angle}.svg"
-    bar=$(seq -s "." $(($value / 15)) | sed 's/[0-9]//g')
-
-    dunstify "t2" -i $ico -a "$value$bar" "$info" -r 91190 -t 800
-}
-
-function get_brightness {
-    brightnessctl info | grep -oP "(?<=\()\d+(?=%)" | cat
-}
-
-function get_brightness_info(){
-    brightnessctl info | awk -F "'" '/Device/ {print $2}'
-}
-
-case $1 in
-i)  # increase the backlight by 5%
-    brightnessctl set +5%
-    send_notification $(get_brightness) $(get_brightness_info) ;;
-d)  # decrease the backlight by 5%
-    if [[ $(get_brightness) -lt 5 ]] ; then
-        # avoid 0% brightness
-        brightnessctl set 1%
+# Get icons
+get_icon() {
+    current=$(get_backlight | sed 's/%//')
+    if [ "$current" -le "20" ]; then
+        icon="$iDIR/brightness-20.png"
+    elif [ "$current" -le "40" ]; then
+        icon="$iDIR/brightness-40.png"
+    elif [ "$current" -le "60" ]; then
+        icon="$iDIR/brightness-60.png"
+    elif [ "$current" -le "80" ]; then
+        icon="$iDIR/brightness-80.png"
     else
-        # decrease the backlight by 5%
-        brightnessctl set 5%-
+        icon="$iDIR/brightness-100.png"
     fi
-    send_notification $(get_brightness) $(get_brightness_info) ;;
-*)  # print error
-    print_error ;;
-esac
+}
 
+# Notify
+notify_user() {
+    notify-send -e -h string:x-canonical-private-synchronous:brightness_notif -h int:value:$current -u low -i "$icon" "Brightness : $current%"
+}
+
+# Change brightness
+change_backlight() {
+    brightnessctl set "$1" && get_icon && notify_user
+}
+
+# Execute accordingly
+case "$1" in
+    "--get")
+        get_backlight
+        ;;
+    "--inc")
+        change_backlight "+10%"
+        ;;
+    "--dec")
+        change_backlight "10%-"
+        ;;
+    *)
+        get_backlight
+        ;;
+esac

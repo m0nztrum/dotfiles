@@ -5,11 +5,7 @@
     "include": ["~/.config/waybar/modules.json"],
     "reload_style_on_change": true,
 
-    "modules-left": [
-        "hyprland/workspaces",
-        "idle_inhibitor",
-        "power-profiles-daemon",
-    ],
+    "modules-left": ["hyprland/workspaces", "idle_inhibitor"],
     "modules-center": ["custom/cava_mviz", "clock", "custom/media"],
     "modules-right": [
         "tray",
@@ -17,6 +13,7 @@
         "group/laptop",
         "group/motherboard",
         "network",
-        "custom/wallchange",
+        // "custom/wallchange",
+        "custom/swaync",
     ],
 }

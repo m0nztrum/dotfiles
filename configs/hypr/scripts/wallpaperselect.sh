@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # set variables
 ScrDir=`dirname "$(realpath "$0")"`
@@ -24,7 +24,7 @@ if [ ! -z "${RofiSel}" ] ; then
         --transition-type "wipe" \
         --transition-duration 2
 
-    dunstify "Changed Wallpaper to ${RofiSel}" -a "Wallpaper" -i "${wallPath}/${RofiSel}" -r 91190 -t 2200
+    notify-send "Changed Wall to ${RofiSel}" -a "Wallpaper" -i "${wallPath}/${RofiSel}" -t 2200
     ln -sf "$selected" "$HOME/.config/swww/.current_wallpaper"
 
     wal -i "${wallPath}"
@@ -32,3 +32,4 @@ if [ ! -z "${RofiSel}" ] ; then
 
     pywalfox update
 fi
+

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-swww init
+swww-daemon --format xrgb
 
 swww img ~/.config/swww/.current_wallpaper
