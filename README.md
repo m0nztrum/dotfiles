@@ -35,7 +35,6 @@
 -   file manager (TUI): [ranger](https://google.com)
 -   file manager (GUI): dolphin and thunar
 -   screenshot helper: [grimblast](https://github.com/hyprwm/contrib/tree/main/grimblast) (do `grimblast check` to see if its dependencies are satisfied)
--   app launcher: [rofi](https://github.com/lbonn/rofi) (for theme, copy `~/.config/.local/share/rofi/themes/catppuccin-mocha.rasi` to `~/.local/share/rofi/themes/catppuccin-mocha.rasi`)
 -   [wlogout](https://github.com/ArtsyMacaw/wlogout)
 -   [hyprpaper](https://github.com/hyprwm/hyprpaper)
 -   [hypridle](https://github.com/hyprwm/hypridle)
