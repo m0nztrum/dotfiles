@@ -29,6 +29,8 @@ if [ ! -z "${RofiSel}" ] ; then
 
     wal -i "${wallPath}"
     pkill waybar && waybar
+    swaync-client -rs
+    pywal-discord
 
     pywalfox update
 fi

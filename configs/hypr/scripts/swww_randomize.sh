@@ -24,7 +24,9 @@ if [ ${#files[@]} -ge 1 ]; then
     sleep 0.2
     wal -i "${random}"
     pywalfox update
+    swaync-client -rs
     pkill waybar && waybar
+    pywal-discord
 else
     echo "Error: No wallpapers found in the specified directory."
 fi
