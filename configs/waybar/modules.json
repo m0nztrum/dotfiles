@@ -9,17 +9,17 @@
     "hyprland/workspaces": {
         "disable-scroll": false,
         "on-scroll-up": "hyprctl dispatch workspace -1",
-        "on-scroll-down": "hyprctl dispatch workspace +1"
-        // "format": "{icon}",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+        "format": "{icon}"
         // "format-icons": {
-        //     "1": "",
-        //     "2": "",
-        //     "3": "",
-        //     "4": "",
-        //     "5": "",
-        //     "active": "",
-        //     "default": "",
-        // },
+        //    "1": "",
+        //    "2": "",
+        //    "3": "",
+        //    "4": "",
+        //    "5": "",
+        //    "active": "",
+        //    "default": ""
+        //}
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -48,7 +48,7 @@
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "rotate": 0,
-        "format-muted": "婢",
+        "format-muted": "婢 {volume}%",
         "on-click": "~/.config/hypr/scripts/volume.sh --toggle",
         "on-click-right": "pavucontrol -t 3",
         "on-scroll-up": "~/.config/hypr/scripts/volume.sh --inc",
@@ -70,17 +70,18 @@
         "rotate": 0,
         "format-source": " {volume}%",
         "format-source-muted": " {volume}",
-        "on-click": "pavucontrol -t 4",
-        "on-click-middle": "~/.config/hypr/scripts/volumecontrol.sh -i m",
-        "on-scroll-up": "~/.config/hypr/scripts/volumecontrol.sh -i i",
-        "on-scroll-down": "~/.config/hypr/scripts/volumecontrol.sh -i d",
+        "on-click": "~/.config/hypr/scripts/volume.sh --toggle-mic",
+        "on-click-right": "pavucontrol -t 4",
+        "on-scroll-up": "~/.config/hypr/scripts/volume.sh --inc",
+        "on-scroll-down": "~/.config/hypr/scripts/volume.sh --dec",
+
         "tooltip-format": "{format_source} {source_desc}"
     },
 
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{icon}",
-        "format-icons": ["", "", "", "󰃟 ", "󰃠 "],
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
         "on-scroll-up": "brightnessctl set 7%+",
         "on-scroll-down": "brightnessctl set 7%-",
         "tooltip-format": "{percent}% "
@@ -117,10 +118,11 @@
     "network": {
         "format-wifi": " ",
         "rotate": 0,
-        "tooltip-format": "{essid} ({signalStrength}%)",
+        //"tooltip-format": "{essid} ({signalStrength}%)",
+        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
         "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
         "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "󰖪 Disconnected",
+        "format-disconnected": "󰖪 ",
         "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
         "interval": 2,
         "on-click": "nm-applet"

@@ -64,9 +64,9 @@ toggle_mute() {
 # Toggle Mic
 toggle_mic() {
     if [ "$(pamixer --default-source --get-mute)" == "false" ]; then
-        pamixer --default-source -m && notify-send -e -u low -i "$iDIR/microphone-mute.png" "Microphone Switched OFF"
+        pamixer --default-source -m && notify-send -e -u low -i "$iDIR/microphone-mute.png" "Microphone: Muted"
     elif [ "$(pamixer --default-source --get-mute)" == "true" ]; then
-        pamixer -u --default-source u && notify-send -e -u low -i "$iDIR/microphone.png" "Microphone Switched ON"
+        pamixer -u --default-source u && notify-send -e -u low -i "$iDIR/microphone.png" "Microphone: Unmuted"
     fi
 }
 # Get Mic Icon
