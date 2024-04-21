@@ -24,7 +24,7 @@ if [ ! -z "${RofiSel}" ] ; then
         --transition-type "wipe" \
         --transition-duration 2
 
-    notify-send "Changed Wall to ${RofiSel}" -a "Wallpaper" -i "${wallPath}/${RofiSel}" -t 2200
+    notify-send "Wallpaper ${RofiSel}" -a "Wallpaper" -i "${wallPath}/${RofiSel}" -t 2200
     ln -sf "$selected" "$HOME/.config/swww/.current_wallpaper"
 
     wal -i "${wallPath}"
