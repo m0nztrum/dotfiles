@@ -26,11 +26,11 @@ elif [ "$CHOSEN_NETWORK" = "睊  Disable Wi-Fi" ]; then
 else
     SAVED_CONNECTIONS=$(nmcli -g NAME connection)
     if [[ $(echo "$SAVED_CONNECTIONS" | grep -w "$CHOSEN_ID") = "$CHOSEN_ID" ]]; then
-        nmcli connection up id "$CHOSEN_ID" | grep "successfully" && notify-send -i "$HOME/.local/bin/notifications/icons/wifi.png" "Connected"
+        nmcli connection up id "$CHOSEN_ID" | grep "successfully" && notify-send -i "$ICON" "Connected"
     else
         if [[ "$CHOSEN_NETWORK" =~ "" ]]; then
             WIFI_PASSWORD=$(rofi -dmenu -password -theme "$HOME/.config/rofi/wifi.rasi" )
         fi
-        nmcli device wifi connect "$CHOSEN_ID" password "$WIFI_PASSWORD" | grep "successfully" && notify-send -i "$HOME/.local/bin/notifications/icons/wifi.png" "Connected"
+        nmcli device wifi connect "$CHOSEN_ID" password "$WIFI_PASSWORD" | grep "successfully" && notify-send -i "$ICON" "Connected"
     fi
 fi
