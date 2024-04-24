@@ -34,8 +34,9 @@ Rofi
 </summary>
 
 <h4 align="center"> Wallpaper Select </h4>
-![shot1](screenshots/rofiwalselect1.png)
-![shot1](screenshots/rofiwalselect2.png)
+
+![shot-11](screenshots/rofiwalselect1.png)
+![shot-11](screenshots/rofiwalselect2.png)
 
 </details>
 
