@@ -1,3 +1,5 @@
+## Dotfiles
+
 > [!CAUTION]
 > Requires [pywal](https://github.com/dylanaraps/pywal) to work
 
@@ -26,10 +28,21 @@
 
 </details>
 
+<details>
+<summary> 
+Rofi
+</summary>
+
+<h4 align="center"> Wallpaper Select </h4>
+![shot1](screenshots/rofiwalselect1.png)
+![shot1](screenshots/rofiwalselect2.png)
+
+</details>
+
 ## Dependencies
 
 -   status bar: [waybar](https://github.com/Alexays/Waybar)
--   notification daemon & control center: [swaync](https://github.com/ErikReider/SwayNotificationCenter)
+-   notification daemon: [swaync](https://github.com/ErikReider/SwayNotificationCenter)
 -   audio visualizer: [cava](https://github.com/karlstav/cava)
 -   music player (TUI): mpd & ncmpcpp
 -   file manager (TUI): [ranger](https://google.com)
@@ -39,3 +52,11 @@
 -   [hyprpaper](https://github.com/hyprwm/hyprpaper)
 -   [hypridle](https://github.com/hyprwm/hypridle)
 -   [hyprlock](https://github.com/hyprwm/hyprlock)
+
+# Progress
+
+-   [x] Hyprland
+-   [x] Hyprlock
+-   [ ] Rofi
+-   [x] waybar
+-   [x] Wlogout
