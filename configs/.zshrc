@@ -45,8 +45,12 @@ alias c="clear"
 alias ga="gitalias"
 alias rm="rm -rf"
 alias cp="cp -r"
-alias z="zathura --fork"
 alias up="sudo pacman -Syu"
+alias ssh="kitty +kitten ssh" # when ssh from my kitty terminal
+alias cvim="cd ~/.config/nvim/" # goes to nvim config path
+alias t="touch"
+alias cat="bat --style=plain"
+alias proj="cd ~/Projects/"
 
 
 # binfiles from (https://github.com/punixcorn/binfiles)
@@ -57,3 +61,9 @@ source $HOME/binfiles/.completions/_bin_completions.sh >/dev/null 2>&1
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+unsetopt BEEP
+
+eval "$(zoxide init zsh)"
+eval "$(thefuck --alias)"
