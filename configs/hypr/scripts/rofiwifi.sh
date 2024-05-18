@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 ICON="$HOME/.config/swaync/icons/wifi.png"

@@ -23,7 +23,7 @@ if [ ${#files[@]} -ge 1 ]; then
     ln -sf "$random" "$HOME/.config/swww/.current_wallpaper"
     sleep 0.2
     wal -i "${random}"
-    pywalfox update
+    # pywalfox update
     swaync-client -rs
     pkill waybar && waybar
     pywal-discord
