@@ -6,18 +6,12 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 
-
-#      ___  __    _  _   __  __  _  _  ___ 
-#     (  ,\(  )  ( )( ) / _)(  )( \( )/ __)
-#      ) _/ )(__  )()( ( (/\ )(  )  ( \__ \
-#     (_)  (____) \__/  \__/(__)(_)\_)(___/
+# zsh plugins
 plugins=(
-    git 
     python 
     zsh-autosuggestions 
     zsh-syntax-highlighting
     fzf-zsh-plugin
-    zsh-256color
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -26,19 +20,14 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 
-#       __    __    ____    __    ___  ____  ___ 
-#      /__\  (  )  (_  _)  /__\  / __)( ___)/ __)
-#     /(__)\  )(__  _)(_  /(__)\ \__ \ )__) \__ \
-#    (__)(__)(____)(____)(__)(__)(___/(____)(___/
-
+# ALIASES
 alias l="eza -1 --icons=auto" # long list
 alias ls="eza --icons=auto" # short list
 alias ll="eza -lha --icons=auto --sort=name --group-directories-first" # long list all
-alias ld="eza -1D --icons=auto" # long list dirs
 alias v="nvim"
 alias suv="sudo nvim"
 alias c="clear"
@@ -50,7 +39,12 @@ alias ssh="kitty +kitten ssh" # when ssh from my kitty terminal
 alias cvim="cd ~/.config/nvim/" # goes to nvim config path
 alias t="touch"
 alias cat="bat --style=plain"
-alias proj="cd ~/Projects/"
+alias proj="cd ~/projects/"
+
+# call neovide
+function vv(){
+    neovide $@ & disown
+}
 
 
 # binfiles from (https://github.com/punixcorn/binfiles)
@@ -63,7 +57,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+# Turn off beeping noice
 unsetopt BEEP
 
 eval "$(zoxide init zsh)"
-eval "$(thefuck --alias)"
+
+export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
