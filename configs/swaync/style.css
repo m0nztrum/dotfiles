@@ -1,7 +1,7 @@
 @import '../../.cache/wal/colors-waybar.css';
 
 @define-color noti-border-color @background;
-@define-color noti-bg alpha(@background, .85);
+@define-color noti-bg alpha(@background, .55);
 @define-color noti-bg-hover @color1;
 @define-color noti-bg-focus @color2;
 @define-color noti-close-bg @background;

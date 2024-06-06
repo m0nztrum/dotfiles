@@ -13,7 +13,7 @@ elif [[ "$CONNECTED" =~ "disabled" ]]; then
     TOGGLE="直  Enable Wi-Fi"
 fi
 
-CHOSEN_NETWORK=$(echo -e "$TOGGLE\n$WIFI_LIST" | uniq -u | rofi -dmenu -theme "$HOME/.config/rofi/wifi.rasi")
+CHOSEN_NETWORK=$(echo -e "$TOGGLE\n$WIFI_LIST" | uniq -u | rofi -dmenu -theme "$HOME/.config/rofi/launchers/wifi/wifi.rasi")
 CHOSEN_ID=$(echo "${CHOSEN_NETWORK:3}" | xargs)
 
 if [ "$CHOSEN_NETWORK" = "" ]; then
@@ -28,7 +28,7 @@ else
         nmcli connection up id "$CHOSEN_ID" | grep "successfully" && notify-send -i "$ICON" "Connected"
     else
         if [[ "$CHOSEN_NETWORK" =~ "" ]]; then
-            WIFI_PASSWORD=$(rofi -dmenu -password -theme "$HOME/.config/rofi/wifi.rasi" )
+            WIFI_PASSWORD=$(rofi -dmenu -password -theme "$HOME/.config/rofi/launchers/wifi/wifi.rasi" )
         fi
         nmcli device wifi connect "$CHOSEN_ID" password "$WIFI_PASSWORD" | grep "successfully" && notify-send -i "$ICON" "Connected"
     fi

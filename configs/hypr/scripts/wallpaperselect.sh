@@ -11,7 +11,7 @@ monitor_scale=$(hyprctl -j monitors | jq '.[] | select (.focused == true) | .sca
 x_monres=$(( x_monres * 17 / monitor_scale ))
 
 # launch rofi menu
-RofiSel=$( find -L "${wallPath}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec basename {} \; | sort | while read rfile
+RofiSel=$( find -L "${wallPath}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -exec basename {} \; | sort | while read rfile
     do
         echo -en "$rfile\x00icon\x1f${wallPath}/${rfile}\n"
 done | rofi -show -dmenu -theme  "${RofiConf}" -select "${currentWall}")

@@ -1,8 +1,9 @@
 {
     "clock": {
-        "format": "{:%H:%M:%OS}",
+        "format": "  {:%H:%M}",
+        //"format": " {:%H:%M 󰃭 %a %d}",
         "interval": 1,
-        "format-alt": " {:%H:%M   %Y, %d %B, %A}",
+        "format-alt": " {:%H:%M   %Y, %d %B, %a}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
@@ -11,16 +12,8 @@
         "on-scroll-up": "hyprctl dispatch workspace -1",
         "on-scroll-down": "hyprctl dispatch workspace +1",
         "format": "{icon}"
-        // "format-icons": {
-        //    "1": "",
-        //    "2": "",
-        //    "3": "",
-        //    "4": "",
-        //    "5": "",
-        //    "active": "",
-        //    "default": ""
-        //}
     },
+
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -61,7 +54,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["", "", " "]
         }
     },
 
@@ -128,6 +121,11 @@
         "on-click": "nm-applet"
     },
 
+    "mpd": {
+        "format": "{artist} - {title}",
+        "interval": 10
+    },
+
     "power-profiles-daemon": {
         "format": "{icon} ",
         "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
@@ -138,6 +136,17 @@
             "balanced": "",
             "power-saver": ""
         }
+    },
+
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "󰂳",
+        "format-connected": "󰂱 {num_connections}",
+        "tooltip-format": " {device_alias}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+        "tooltip": true,
+        "on-click": "blueman-manager"
     },
 
     "custom/media": {
@@ -196,6 +205,13 @@
             "Playing": "<span foreground='#B1B946'>󰝚</span>",
             "Paused": "<span foreground='#47423E'>󰝛</span>"
         }
+    },
+
+    "custom/weather": {
+        "restart-interval": 300,
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/Weather.py",
+        "tooltip": true
     },
 
     "custom/cava_mviz": {
