@@ -1,14 +1,9 @@
 #!/usr/bin/env bash
 
 # set variables
-ScrDir=`dirname "$(realpath "$0")"`
-RofiConf="${XDG_CONFIG_HOME:-$HOME/.config}/rofi/wallpaperselect.rasi"
-wallPath="${XDG_CONFIG_HOME:-$HOME/.config}/swww/wallpapers"
+RofiConf="$HOME/.config/rofi/wallpaperselect.rasi"
+wallPath="$HOME/.config/swww/wallpapers/"
 
-# scale for monitor x res
-x_monres=$(hyprctl -j monitors | jq '.[] | select(.focused==true) | .width')
-monitor_scale=$(hyprctl -j monitors | jq '.[] | select (.focused == true) | .scale' | sed 's/\.//')
-x_monres=$(( x_monres * 17 / monitor_scale ))
 
 # launch rofi menu
 RofiSel=$( find -L "${wallPath}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -exec basename {} \; | sort | while read rfile
@@ -27,7 +22,7 @@ if [ ! -z "${RofiSel}" ] ; then
     notify-send "Wallpaper ${RofiSel}" -a "Wallpaper" -i "${wallPath}/${RofiSel}" -t 2200
     ln -sf "$selected" "$HOME/.config/swww/.current_wallpaper"
 
-    wal -i "${wallPath}"
+    wal -i "${selected}"
     pkill waybar && waybar
     swaync-client -rs
     pywal-discord
