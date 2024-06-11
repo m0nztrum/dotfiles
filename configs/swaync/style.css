@@ -1,44 +1,45 @@
+/*
+ * vim: ft=less
+ */
+
 @import '../../.cache/wal/colors-waybar.css';
 
-@define-color noti-border-color @background;
-@define-color noti-bg alpha(@background, .55);
-@define-color noti-bg-hover @color1;
-@define-color noti-bg-focus @color2;
-@define-color noti-close-bg @background;
-@define-color noti-close-bg-hover @color1;
-@define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
-@define-color bg-selected @color2;
-@define-color shade-lighter rgba(255, 255, 255, 0.1);
 
 * {
     font-family: 'JetBrainsMono Nerd Font';
+    color: @foreground;
+    transition: 200ms;
 }
 
-.control-center .notification-row:focus,
-.control-center .notification-row:hover {
-    opacity: 1;
-    background: @noti-bg;
-    border-radius: 0px;
-    margin: 0px;
+.notification-row {
+    outline: none;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+    background: @background;
 }
 
 .notification {
-    border-radius: 10px;
+    border-radius: 12px;
+    margin-top: 4px;
+    margin-bottom: 16px;
+    border: 2px solid @background;
+    box-shadow: 0 0 5 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
+        0 2px 6px 2px rgba(0, 0, 0, 0.3);
     padding: 0;
-    border: 1px solid @noti-close-bg;
-    background: @noti-bg;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.75);
 }
 
 .notification-content {
     background: transparent;
-    padding: 10px;
+    padding: 16px;
+    border-radius: 12px;
 }
 
 /* The notification Close Button */
 .close-button {
-    background: @noti-close-bg;
-    color: @text-color;
+    background: @background;
+    color: @foreground;
     text-shadow: none;
     padding: 0;
     border-radius: 100%;
@@ -52,7 +53,7 @@
 
 .close-button:hover {
     box-shadow: none;
-    background: @noti-close-bg-hover;
+    background: @color1;
     transition: all 0.15s ease-in-out;
     border: none;
 }
@@ -62,23 +63,22 @@
     padding: 4px;
     margin: 0;
     box-shadow: none;
-    background: @noti-bg;
-    border: none;
-    color: @text-color;
-    transition: all 0.15s ease-in-out;
-    font-size: 11pt;
+    background: alpha(@background, 0.55);
+    color: @foreground;
+    transition: all 200ms ease;
 }
 
 .notification-default-action:hover,
 .notification-action:hover {
     -gtk-icon-effect: none;
-    background: @noti-bg-hover;
+    background: @color1;
 }
 
 .notification-default-action {
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
+/* When alternative actions are visible */
 .notification-default-action:not(:only-child) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -92,5 +92,200 @@
 
 .notification-action:first-child {
     border-bottom-left-radius: 10px;
+}
+
+.notification-action:first-child {
+    border-bottom-left-radius: 10px;
     background: @background;
+}
+
+.image {
+    border-radius: 16px;
+}
+
+.body-image {
+    margin-top: 4px;
+    background-color: @foreground;
+    border-radius: 4px;
+}
+
+.summary {
+    font-size: 14px;
+    font-weight: bolder;
+    background: transparent;
+    color: @foreground;
+    text-shadow: none;
+    margin-right: 4px;
+}
+
+.time {
+    font-size: 12px;
+    font-weight: bold;
+    background: transparent;
+    color: @foreground;
+    text-shadow: none;
+    margin-right: 16px;
+}
+
+.body {
+    font-size: 12px;
+    font-weight: bold;
+    background: transparent;
+    color: @foreground;
+    margin-right: 4px;
+}
+
+.top-action-title {
+    color: @foreground;
+    text-shadow: none;
+}
+
+
+/* Central Control */
+.control-center {
+    background: alpha(@background, 0.65);
+    border-radius: 16px;
+    margin: 10px 10px;
+    padding: 14px;
+}
+
+.control-center .notification-row .notification-background .notification {
+    border-radius: 16px;
+    color: @foreground;
+    background-color: @color2;
+}
+
+.control-center .notification-row .notification-background .notification:hover {
+    background-color: @color1;
+    color: @foreground;
+}
+
+.control-center .notification-normal .notification-background:active {
+    box-shadow: inset 0 0 0 1px #45475a;
+    background-color: @color4;
+    color: @foreground;
+}
+
+
+.control-center-list {
+    background: alpha(@background , 0.7);
+
+}
+
+.floating-notifications {
+    background: transparent;
+}
+
+/* Window behind control center and on all other monitors */
+.blank-window {
+    background: alpha(@background, 0.3);
+}
+
+/*** Widgets ***/
+
+/* Title widget */
+.widget-title {
+    margin-left: 8px;
+    margin-right: 8px;
+    font-size: 1.5rem;
+}
+
+.widget-title>button {
+    font-size: initial;
+    color: @foreground;
+    text-shadow: none;
+    background: @background;
+    box-shadow: none;
+    border-radius: 12px;
+}
+
+.widget-title>button:hover {
+    background: @color1;
+}
+
+/* DND widget */
+.widget-dnd {
+    margin: 8px;
+    font-size: 1.1rem;
+}
+
+.widget-dnd>switch {
+    font-size: initial;
+    border-radius: 12px;
+    background: @background;
+    box-shadow: none;
+}
+
+.widget-dnd>switch:checked {
+    background: @background;
+}
+
+.widget-dnd>switch slider {
+    background: @color3;
+    border-radius: 12px;
+}
+
+/* Volume and Brightness Widget*/
+
+.widget-volume {
+    background-color: @background;
+    color: @foreground;
+    padding: 4px 8px 8px 8px;
+    margin: 0px 8px 8px 8px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+
+.widget-backlight {
+    background-color: @background;
+    color: @foreground;
+    padding: 8px 8px 4px 8px;
+    margin: 0px 8px 8px 8px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* Mpris widget */
+
+.widget-mpris {
+    /* The parent to all players */
+    color: @foreground;
+    border-radius: 16px;
+}
+
+.widget-mpris-player {
+    border-radius: 16px;
+    padding: 6px 14px;
+    margin: 8px;
+}
+
+.widget-mpris-title {
+    font-weight: bold;
+    font-size: 16px;
+    color: @foreground;
+}
+
+.widget-mpris-subtitle {
+    font-size: 13px;
+    color: @foreground;
+}
+
+.widget-mpris button {
+    color: alpha(@foreground, .6);
+}
+
+.widget-mpris>box>button {
+    color: @foreground;
+    border-radius: 20px;
+}
+
+progressbar,
+progress,
+trough {
+    border-radius: 12px;
+}
+
+progressbar {
+    background-color: rgba(255, 255, 255, .1);
 }

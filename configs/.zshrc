@@ -25,6 +25,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # ALIASES
+# -------
 alias l="eza -1 --icons=auto" # long list
 alias ls="eza --icons=auto" # short list
 alias ll="eza -lha --icons=auto --sort=name --group-directories-first" # long list all
@@ -46,6 +47,32 @@ function vv(){
     neovide $@ & disown
 }
 
+# Get current weather for a city
+function weather() {
+    curl -s "wttr.in/$1"
+}
+
+# Extract any archive
+function extract() {
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1    ;;
+            *.tar.gz)    tar xzf $1    ;;
+            *.bz2)       bunzip2 $1    ;;
+            *.rar)       unrar x $1    ;;
+            *.gz)        gunzip $1     ;;
+            *.tar)       tar xf $1     ;;
+            *.tbz2)      tar xjf $1    ;;
+            *.tgz)       tar xzf $1    ;;
+            *.zip)       unzip $1      ;;
+            *.Z)         uncompress $1 ;;
+            *.7z)        7z x $1       ;;
+            *)           echo "Don't know how to extract '$1'..." ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
 
 # binfiles from (https://github.com/punixcorn/binfiles)
 export PATH=$PATH:$HOME/binfiles

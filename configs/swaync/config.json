@@ -6,7 +6,7 @@
     "control-center-margin-bottom": 10,
     "control-center-margin-right": 10,
     "control-center-margin-left": 10,
-    "notification-icon-size": 20,
+    "notification-icon-size": 35,
     "notification-body-image-height": 100,
     "notification-body-image-width": 150,
     "timeout": 5,
@@ -47,9 +47,9 @@
 
     "widget-config": {
         "title": {
-            "text": "󰂚  :: Notifications",
+            "text": "󰂚 Notifications",
             "clear-all-button": true,
-            "button-text": " 󰎟 "
+            "button-text": "clear"
         },
         "dnd": {
             "text": "Do not disturb"
@@ -63,16 +63,16 @@
             "image-radius": 12
         },
         "volume": {
-            "label": "󰕾 ",
+            "label": " 󰕾 ",
             "show-per-app": true
         },
         "backlight": {
-            "label": "󰃟 "
+            "label": " 󰃟 "
         },
         "buttons-grid": {
             "actions": [
                 {
-                    "label": "󰕾",
+                    "label": "󰕾 ",
                     "command": "amixer set Master toggle"
                 },
                 {
@@ -84,12 +84,8 @@
                     "command": "nm-connection-editor"
                 },
                 {
-                    "label": "",
+                    "label": " ",
                     "command": "blueman-manager"
-                },
-                {
-                    "label": "󰏘",
-                    "command": "nwg-look"
                 }
             ]
         }
