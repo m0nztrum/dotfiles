@@ -7,6 +7,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 # zsh plugins
+# ----------
 plugins=(
     python 
     zsh-autosuggestions 
@@ -35,24 +36,51 @@ alias c="clear"
 alias ga="gitalias"
 alias rm="rm -rf"
 alias cp="cp -r"
-alias up="sudo pacman -Syu"
+alias sysupdate="sudo pacman -Syu"
 alias ssh="kitty +kitten ssh" # when ssh from my kitty terminal
 alias cvim="cd ~/.config/nvim/" # goes to nvim config path
 alias t="touch"
 alias cat="bat --style=plain"
 alias proj="cd ~/projects/"
+alias zf="zathura --fork"
+
+# yt-dlp
+# ------
+function dl-yt () {
+    if [[ $# -lt 3 ]] || [[ "$1" == "-h" ]]; then
+        echo "Usage: dl-yt [ resolution ] [ type v | p ] [url..]"
+        echo "types:"
+        echo "\tv = video"
+        echo "\tp = playlist"
+        return 1
+    fi
+
+    local resolution=$1
+    local dtype=$2
+    local format="bestvideo[height<=${resolution}][ext=mp4]+bestaudio[ext=m4a]"
+
+    if [[ $dtype == "p" ]]; then
+        yt-dlp -f "$format" -o "%(playlist)s/%(title)s.%(ext)s" "$3"
+    else
+        yt-dlp -f "$format" -o "%(title)s.%(ext)s" "$3"
+    fi
+}
+
 
 # call neovide
+# ------------
 function vv(){
     neovide $@ & disown
 }
 
 # Get current weather for a city
+# ------------------------------
 function weather() {
     curl -s "wttr.in/$1"
 }
 
 # Extract any archive
+# ------------------
 function extract() {
     if [ -f $1 ]; then
         case $1 in
@@ -72,6 +100,11 @@ function extract() {
     else
         echo "'$1' is not a valid file!"
     fi
+}
+
+# Get size of folders / files in current dir
+function ffsize () {
+    du -sh * | sort -h
 }
 
 # binfiles from (https://github.com/punixcorn/binfiles)
