@@ -9,6 +9,7 @@
 
     "hyprland/workspaces": {
         "disable-scroll": false,
+        "show-special": false,
         "on-scroll-up": "hyprctl dispatch workspace -1",
         "on-scroll-down": "hyprctl dispatch workspace +1",
         "format": "{icon}"
@@ -28,11 +29,11 @@
             "warning": 30,
             "critical": 20
         },
-        "format": "{icon}  {capacity}%",
+        "format": "{icon} {capacity}%",
         "format-time": "{H}hr & {m}min",
         "format-charging": "󱐋 {capacity}%",
         "format-plugged": "󱐋 {capacity}%",
-        "format-icons": ["", "", "", "", ""],
+        "format-icons": [" ", " ", " ", " ", " "],
         "interval": 1,
         "tooltip-format-charging": "{time} (󰢟 charging), at {capacity}%",
         "tooltip-format-discharging": "{time} (󱧦 discharging), at {capacity}%"
@@ -41,7 +42,7 @@
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "rotate": 0,
-        "format-muted": "婢 {volume}%",
+        "format-muted": "婢{volume}%",
         "on-click": "~/.config/hypr/scripts/volume.sh --toggle",
         "on-click-right": "pavucontrol -t 3",
         "on-scroll-up": "~/.config/hypr/scripts/volume.sh --inc",
@@ -49,12 +50,12 @@
         "tooltip-format": "{icon} {desc} : {volume}%",
         "scroll-step": 5,
         "format-icons": {
-            "headphone": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", " "]
+            "headphone": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": ["", " ", " "]
         }
     },
 
@@ -62,7 +63,7 @@
         "format": "{format_source}",
         "rotate": 0,
         "format-source": " {volume}%",
-        "format-source-muted": " {volume}",
+        "format-source-muted": "  {volume}",
         "on-click": "~/.config/hypr/scripts/volume.sh --toggle-mic",
         "on-click-right": "pavucontrol -t 4",
         "on-scroll-up": "~/.config/hypr/scripts/volume.sh --inc",
@@ -74,7 +75,7 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", ""],
         "on-scroll-up": "brightnessctl set 7%+",
         "on-scroll-down": "brightnessctl set 7%-",
         "tooltip-format": "{percent}% "
@@ -86,7 +87,8 @@
     },
 
     "memory": {
-        "format": "󰍛 {}%",
+        //"format": "󰍛 {}%",
+        "format": " {:2}%",
         "interval": 1,
         "on-click": "btop"
     },
@@ -131,15 +133,15 @@
         "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
         "tooltip": true,
         "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
+            "default": " ",
+            "performance": " ",
+            "balanced": " ",
+            "power-saver": " "
         }
     },
 
     "bluetooth": {
-        "format": "",
+        "format": " ",
         "format-disabled": "󰂳",
         "format-connected": "󰂱 {num_connections}",
         "tooltip-format": " {device_alias}",
@@ -154,7 +156,7 @@
         "return-type": "json",
         "max-length": 40,
         "format-icons": {
-            "spotify": "",
+            "spotify": " ",
             "default": " "
         },
         "escape": true,
@@ -171,13 +173,13 @@
         "format": "{icon}",
         "format-icons": {
             "notification": "<span foreground='red'><sup></sup></span>",
-            "none": "",
+            "none": " ",
             "dnd-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-none": "",
+            "dnd-none": " ",
             "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "inhibited-none": "",
+            "inhibited-none": " ",
             "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-            "dnd-inhibited-none": ""
+            "dnd-inhibited-none": " "
         },
         "on-click": "sleep 0.1 && swaync-client -t -sw",
         "on-click-right": "sleep 0.1 && swaync-client -d -sw",
@@ -220,7 +222,7 @@
     },
 
     "custom/lock": {
-        "format": "󰍁",
+        "format": "󰍁 ",
         "on-click": "hyprlock"
     },
 

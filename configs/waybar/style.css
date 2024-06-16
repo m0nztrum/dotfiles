@@ -52,6 +52,7 @@ window#waybar {
 #bluetooth,
 #battery,
 #clock,
+#mpd,
 #temperature,
 #custom-cava_mviz,
 #custom-weather,
@@ -62,12 +63,12 @@ window#waybar {
     padding: 0px 7px 0px 7px;
     border-radius: 10px;
     margin: 2px;
-    background-color: @background;
+    background-color: alpha(@background, 0.7);
 }
 
 /* style for groups and individul modules */
 #motherboard {
-    background-color: @background;
+    background-color: alpha(@background, 0.85);
     padding: 0px 8px 0px 8px;
     border-radius: 10px;
     margin: 2px;
@@ -80,7 +81,7 @@ window#waybar {
 }
 
 #audio {
-    background-color: @background;
+    background-color: alpha(@background, 0.85);
     padding: 0px 8px 0px 8px;
     border-radius: 10px;
     margin: 2px;
@@ -146,8 +147,13 @@ window#waybar {
 #battery.plugged {
     color: @color13;
 }
+
 #battery {
     color: @color14;
+}
+
+#mpd {
+    color: @color11;
 }
 
 #pulseaudio.muted,
@@ -162,11 +168,9 @@ window#waybar {
 
 tooltip {
     border-radius: 10px;
-    border-width: 1px;
     border-style: solid;
     padding: 15px;
-    background-color: alpha(@background, 0.5);
-    border-color: @color15;
+    background-color: alpha(@background, 0.8);
 }
 
 #tray > .passive {
