@@ -49,22 +49,32 @@ alias zf="zathura --fork"
 function dl-yt () {
     if [[ $# -lt 3 ]] || [[ "$1" == "-h" ]]; then
         echo "Usage: dl-yt [ resolution ] [ type v | p ] [url..]"
-        echo "types:"
+        echo "Types:"
         echo "\tv = video"
         echo "\tp = playlist"
         return 1
     fi
 
     local resolution=$1
-    local dtype=$2
+    local vtype=$2
     local format="bestvideo[height<=${resolution}][ext=mp4]+bestaudio[ext=m4a]"
 
-    if [[ $dtype == "p" ]]; then
+    if [[ $vtype == "p" ]]; then
         yt-dlp -f "$format" -o "%(playlist)s/%(title)s.%(ext)s" "$3"
     else
         yt-dlp -f "$format" -o "%(title)s.%(ext)s" "$3"
     fi
 }
+_dl-yt(){
+    local state
+    local -a line
+
+    _arguments \
+        '1:resolution:(360 480 720 1080)' \
+        '2:type:(v p)' \
+        '3:url:_urls'
+}
+compdef _dl-yt dl-yt
 
 
 # call neovide
