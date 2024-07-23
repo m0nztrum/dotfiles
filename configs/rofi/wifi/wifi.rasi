@@ -6,6 +6,7 @@ configuration {
 }
 
 @import                          "~/.cache/wal/colors-rofi-dark.rasi"
+@import                          "~../shared/colors.rasi"
 
 *{
     background-alt:             @selected-active-background;
