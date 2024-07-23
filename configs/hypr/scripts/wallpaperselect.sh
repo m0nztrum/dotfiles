@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # set variables
-RofiConf="$HOME/.config/rofi/wallpaperselect.rasi"
+RofiConf="$HOME/.config/rofi/wallpaper/wallpaperselect.rasi"
 wallPath="$HOME/.config/swww/wallpapers/"
 
 
@@ -17,16 +17,12 @@ if [ ! -z "${RofiSel}" ] ; then
 
     swww img $selected \
         --transition-type "wipe" \
-        --transition-duration 2
+        --transition-duration 1
 
     notify-send "Wallpaper ${RofiSel}" -a "Wallpaper" -i "${wallPath}/${RofiSel}" -t 2200
     ln -sf "$selected" "$HOME/.config/swww/.current_wallpaper"
 
     wal -i "${selected}"
-    pkill waybar && waybar
-    swaync-client -rs
-    pywal-discord
-
-    pywalfox update
+    . ~/.config/hypr/scripts/wal-apply.sh
 fi
 
