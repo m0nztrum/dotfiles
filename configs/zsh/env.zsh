@@ -10,3 +10,6 @@ export PYTHON_VENV_NAME=".venv"
 
 # binfiles
 export PATH=$PATH:$HOME/binfiles
+
+# Cargo bin
+export PATH=$PATH:$HOME/.cargo/bin

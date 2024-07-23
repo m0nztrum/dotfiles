@@ -34,4 +34,4 @@ alias week='date +%V'
 # Print each PATH entry on a separate line
 alias echopath='echo -e ${PATH//:/\\n}'
 
-alias c='cd $(fd --type d . | fzf --preview "exa --long --icons --color=always {}")'
+alias cdf='cd $(fd --type d . | fzf --preview "exa --long --icons --color=always {}")'
