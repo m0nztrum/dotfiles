@@ -5,8 +5,8 @@
     "include": ["~/.config/waybar/modules.json"],
     "reload_style_on_change": true,
 
-    "modules-left": ["clock", "custom/media", "mpd", "custom/cava_mviz"],
-    "modules-center": ["hyprland/workspaces"],
+    "modules-left": ["clock", "custom/media" ],
+    "modules-center": ["hyprland/workspaces" ],
     "modules-right": [
         "tray",
         "custom/weather",

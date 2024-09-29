@@ -1,18 +1,37 @@
 {
     "clock": {
-        "format": "  {:%H:%M}",
-        //"format": " {:%H:%M 󰃭 %a %d}",
+        "format": "󰥔 {:%H:%M}",
         "interval": 1,
-        "format-alt": " {:%H:%M   %Y, %d %B, %a}",
+        "format-alt": "󰥔  {:%H:%M   %Y, %d %B, %a}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
     "hyprland/workspaces": {
+        //"format": "{icon}",
         "disable-scroll": false,
-        "show-special": false,
         "on-scroll-up": "hyprctl dispatch workspace -1",
         "on-scroll-down": "hyprctl dispatch workspace +1",
-        "format": "{icon}"
+        "format-icons": {
+            "urgent": "󰀨",
+            "active": "",
+            "default": ""
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 40,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) — firefox": "󰈹 $1",
+            "(.*)firefox": "󰈹 Firefox",
+            "(.*) - zsh": "> [$1]",
+            "^.*~$": "󰄛 Kitty $1",
+            "(.*) - mpv": "Mpv",
+            "^.*v( .*|$)": " $1",
+            "^.*zathura.*": "Zathura $1",
+            "(.*)Visual Studio Code": "Code 󰨞"
+        }
     },
 
     "idle_inhibitor": {
@@ -31,9 +50,8 @@
         },
         "format": "{icon} {capacity}%",
         "format-time": "{H}hr & {m}min",
-        "format-charging": "󱐋 {capacity}%",
-        "format-plugged": "󱐋 {capacity}%",
-        "format-icons": [" ", " ", " ", " ", " "],
+        "format-charging": "󰂄 {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "interval": 1,
         "tooltip-format-charging": "{time} (󰢟 charging), at {capacity}%",
         "tooltip-format-discharging": "{time} (󱧦 discharging), at {capacity}%"
@@ -73,7 +91,6 @@
     },
 
     "backlight": {
-        // "device": "acpi_video1",
         "format": "{icon} {percent}%",
         "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", ""],
         "on-scroll-up": "brightnessctl set 7%+",
@@ -87,9 +104,8 @@
     },
 
     "memory": {
-        //"format": "󰍛 {}%",
-        "format": " {:2}%",
-        "interval": 1,
+        "format": " {}%",
+        "interval": 2,
         "on-click": "btop"
     },
 
@@ -105,26 +121,34 @@
 
     "temperature": {
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
 
     "network": {
-        "format-wifi": " ",
+        "format-wifi": "{icon} {essid}",
         "rotate": 0,
-        //"tooltip-format": "{essid} ({signalStrength}%)",
-        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+        "format-ethernet": "󰈁 {ifname}",
         "format-linked": " {ifname} (No IP)",
         "format-disconnected": "󰖪 ",
-        "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
-        "interval": 2,
+        "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "interval": 3,
         "on-click": "nm-applet"
     },
 
     "mpd": {
-        "format": "{artist} - {title}",
+        "max-length": 25,
+        "format": "  {artist} - {title}",
+        "format-paused": " {title}",
+        "format-stopped": " ",
+        "on-click": "mpc --quiet toggle",
+        "on-click-middle": "kitty ncmpcpp",
+        "on-scroll-up": "mpc --quiet prev",
+        "on-scroll-down": "mpc --quiet next",
+        "smooth-scrolling-threshold": 5,
+        "tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})",
         "interval": 10
     },
 
@@ -153,14 +177,14 @@
 
     "custom/media": {
         "format": "{icon} {}",
+        "escape": true,
         "return-type": "json",
         "max-length": 40,
         "format-icons": {
             "spotify": " ",
             "default": " "
         },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null",
+        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null",
         "on-click": "playerctl --player spotify play-pause",
         "on-scroll-up": "playerctl --player spotify next",
         "on-scroll-down": "playerctl --player spotify next"
@@ -210,10 +234,10 @@
     },
 
     "custom/weather": {
-        "restart-interval": 300,
         "return-type": "json",
-        "exec": "~/.config/waybar/scripts/Weather.py",
-        "tooltip": true
+        "exec": "~/.config/waybar/scripts/get_weather.sh Accra",
+        "tooltip": true,
+        "interval": 3600
     },
 
     "custom/cava_mviz": {
@@ -224,6 +248,11 @@
     "custom/lock": {
         "format": "󰍁 ",
         "on-click": "hyprlock"
+    },
+    "custom/power": {
+        "format": "⏻ ",
+        "tooltip": false,
+        "on-click": "wlogout"
     },
 
     "group/audio": {
