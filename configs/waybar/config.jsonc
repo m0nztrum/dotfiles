@@ -1,20 +1,37 @@
-{
-    "position": "top",
-    "layer": "top",
-    "height": 0,
-    "include": ["~/.config/waybar/modules.json"],
-    "reload_style_on_change": true,
+[
+    {
+        "position": "top",
+        "layer": "top",
+        "height": 0,
+        "reload_style_on_change": true,
+        "modules-left": ["clock"],
+        "modules-center": ["hyprland/workspaces"],
+        "modules-right": ["tray", "group/audio", "group/hardware", "network", "custom/swaync"],
+        "include": [
+            "~/.config/waybar/modules/clock.json",
+            "~/.config/waybar/modules/workspaces.json",
+            "~/.config/waybar/modules/network.json",
+            "~/.config/waybar/modules/swaync.json",
+            "~/.config/waybar/modules/pulseaudio.json",
+            "~/.config/waybar/modules/hardware.json",
+            "~/.config/waybar/modules/media.json",
+            "~/.config/waybar/modules/cava.json",
+        ],
+    },
 
-    "modules-left": ["clock", "custom/media" ],
-    "modules-center": ["hyprland/workspaces" ],
-    "modules-right": [
-        "tray",
-        "custom/weather",
-        "group/audio",
-        "group/laptop",
-        "group/motherboard",
-        "network",
-        "custom/swaync",
-    ],
-},
-
+    {
+        "layer": "bottom",
+        "output": ["HDMI-A-1", "HDMI-A-2", "DP-1", "DP-2", "eDP-1"],
+        "position": "bottom",
+        "margin-top": 0,
+        "margin-left": 350,
+        "margin-right": 350,
+        "margin-bottom": 8,
+        "include": ["~/.config/waybar/modules/app-launcher.json"],
+        "modules-center": ["group/app-launcher"],
+        "custom/space": {
+            "format": " ",
+            "tooltip": false,
+        },
+    },
+]
