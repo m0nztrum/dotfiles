@@ -2,10 +2,10 @@
 configuration {
 	modi:                       "drun,filebrowser,window";
     show-icons:                 true;
-    display-drun:               "";
-    display-run:                "";
-    display-filebrowser:        "";
-    display-window:             "";
+    display-drun:               " ";
+    display-run:                " ";
+    display-filebrowser:        " ";
+    display-window:             " ";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
@@ -24,7 +24,8 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       600px;
+    width:                       45%;
+    height:                      70%;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -66,7 +67,7 @@ inputbar {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "";
+    str:                         " ";
     padding:                     12px 15px;
     border-radius:               100%;
     background-color:            @background-alt;
@@ -92,12 +93,12 @@ dummy {
 /*****----- Mode Switcher -----*****/
 mode-switcher{
     enabled:                     true;
-    spacing:                     10px;
+    spacing:                     8px;
     background-color:            transparent;
     text-color:                  @foreground;
 }
 button {
-    width:                       45px;
+    width:                       40px;
     padding:                     12px;
     border-radius:               100%;
     background-color:            @background-alt;
