@@ -62,7 +62,7 @@ entry {
     background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 " Search for WiFI networks";
+    placeholder:                 "Search for WiFI networks";
     placeholder-color:           inherit;
 }
 
