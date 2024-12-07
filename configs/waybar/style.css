@@ -19,7 +19,7 @@ window#waybar {
 }
 
 window#waybar.bottom .modules-center {
-    color: @foreground;
+    color: @color5;
     padding: 0px;
 }
 

@@ -12,5 +12,22 @@
         "on-click": "playerctl --player spotify play-pause",
         "on-scroll-up": "playerctl --player spotify next",
         "on-scroll-down": "playerctl --player spotify next"
+    },
+
+    "mpris": {
+        "format": "{status_icon}   {player_icon} {artist} - {title}",
+        "format-paused": "{status_icon} {player_icon} <i>{dynamic}</i>",
+        "max-length": 40,
+        "player-icons": {
+            "default": "",
+            "mpd": " ",
+            "firefox": " ",
+            "mpv": " "
+        },
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        }
     }
 }
