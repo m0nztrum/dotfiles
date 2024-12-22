@@ -1,3 +1,6 @@
+# location of the zsh configurations
+export ZDOTDIR="$HOME/.config/zsh"
+
 export VISUAL=nvim
 export EDITOR=nvim
 export TERMINAL=kitty
@@ -12,4 +15,4 @@ export PYTHON_VENV_NAME=".venv"
 export PATH=$PATH:$HOME/binfiles
 
 # Cargo bin
-export PATH=$PATH:$HOME/.cargo/bin
+e
