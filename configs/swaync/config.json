@@ -36,14 +36,7 @@
         }
     },
 
-    "widgets": [
-        "title",
-        "dnd",
-        "notifications",
-        "backlight",
-        "volume",
-        "mpris"
-    ],
+    "widgets": ["title", "dnd", "notifications", "mpris", "buttons-grid"],
 
     "widget-config": {
         "title": {
@@ -59,7 +52,7 @@
             "text": "Notifications Center"
         },
         "mpris": {
-            "image-size": 96,
+            "image-size": 80,
             "image-radius": 12
         },
         "volume": {
@@ -72,20 +65,16 @@
         "buttons-grid": {
             "actions": [
                 {
-                    "label": "󰕾 ",
-                    "command": "amixer set Master toggle"
-                },
-                {
-                    "label": "󰍬",
-                    "command": "amixer set Capture toggle"
-                },
-                {
-                    "label": "",
+                    "label": "  Wi-FI",
                     "command": "nm-connection-editor"
                 },
                 {
-                    "label": " ",
+                    "label": " Bluetooth",
                     "command": "blueman-manager"
+                },
+                {
+                    "label": "󰕾 Mute",
+                    "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
                 }
             ]
         }

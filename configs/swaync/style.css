@@ -22,8 +22,6 @@
 
 .notification {
     border-radius: 12px;
-    margin-top: 4px;
-    margin-bottom: 16px;
     border: 2px solid @background;
     box-shadow: 0 0 5 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
         0 2px 6px 2px rgba(0, 0, 0, 0.3);
@@ -32,7 +30,7 @@
 
 .notification-content {
     background: transparent;
-    padding: 10px;
+    padding: 8px;
     border-radius: 12px;
 }
 
@@ -227,7 +225,7 @@
 /* Volume and Brightness Widget*/
 
 .widget-volume {
-    background-color: @background;
+    background-color: alpha(@background, 0.0);
     color: @foreground;
     padding: 4px 8px 8px 8px;
     margin: 0px 8px 8px 8px;
@@ -237,7 +235,7 @@
 
 
 .widget-backlight {
-    background-color: @background;
+    background-color: alpha(@background, 0.0);
     color: @foreground;
     padding: 8px 8px 4px 8px;
     margin: 0px 8px 8px 8px;
@@ -266,7 +264,7 @@
 }
 
 .widget-mpris-subtitle {
-    font-size: 13px;
+    font-size: 12px;
     color: @foreground;
 }
 
@@ -287,4 +285,25 @@ trough {
 
 progressbar {
     background-color: rgba(255, 255, 255, .1);
+}
+
+/* BUttons widget */
+.widget-buttons-grid {
+    font-size: 12px;
+    background: transparent;
+}
+
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+    background: @color1;
+    color: @color7;
+    border-radius: 16px;
+    margin: 2px;
+    padding: 4px;
+    border: 0px solid #04030a;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+    background: @color4;
+    transition: all 0.3s ease-in-out;
 }
