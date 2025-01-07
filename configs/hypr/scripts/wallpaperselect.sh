@@ -2,7 +2,7 @@
 
 # set variables
 RofiConf="$HOME/.config/rofi/wallpaper/wallpaperselect.rasi"
-wallPath="$HOME/.config/swww/wallpapers/"
+wallPath="$HOME/wallpapers/"
 
 
 # launch rofi menu
